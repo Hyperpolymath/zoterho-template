@@ -1,0 +1,59 @@
+= Automation Cookbook: Just Recipes
+Jonathan D. A. Jewell
+v2.0, 2025-11-12
+:toc: left
+:toclevels: 2
+:doctype: book
+
+This document catalogues the full set of recipes available in the JUSTFILE for the make-it-red-rhodium-standard project. All recipes are intended to be run using the just command.
+
+== Recipes
+
+=== just setup
+Description: Installs necessary project dependencies (Rescript via npm) and prepares the environment.
+Dependencies: npm, deno.
+[source,bash]
+
+npm install
+deno cache ./oil-shell/build.oil
+
+=== just clean
+Description: Removes all generated build files, compiled JavaScript output, and temporary manifest files.
+Arguments: Uses the default TARGET_VERSION (2.0) from the Justfile.
+[source,bash]
+
+rm -rf build
+rm -rf src-$(TARGET_VERSION)/lib
+rm -f src-$(TARGET_VERSION)/manifest.json
+rm -f src-$(TARGET_VERSION)/updates-$(TARGET_VERSION).json
+
+=== just build
+Description: The primary, top-level recipe. Executes a full clean build of the XPI package and the update manifest for the target version.
+Dependencies: setup, oil-shell/build.oil.
+[source,bash]
+
+just setup
+./oil-shell/build.oil
+
+=== just compile-rescript TARGET_VERSION:<version>
+Description: Compiles the Rescript source code in the specified src-<version> directory into JavaScript.
+Arguments: TARGET_VERSION (e.g., 2.0).
+[source,bash]
+
+rescript -with-deps -w false -format false
+
+=== just compile-nickel TARGET_VERSION:<version>
+Description: Compiles the Nickel configuration for the Zotero manifest.json into the target source directory.
+Arguments: TARGET_VERSION (e.g., 2.0).
+[source,bash]
+
+nickel export --format json config/Manifest.nix -o src-$(TARGET_VERSION)/manifest.json
+
+=== just generate-update-json TARGET_VERSION:<version>
+Description: Calculates the SHA256 hash of the generated XPI and compiles the final Nickel-based update manifest, injecting the hash.
+Arguments: TARGET_VERSION (e.g., 2.0).
+Dependencies: Requires the XPI to be built first.
+[source,bash]
+
+XPI_HASH=$$(shasum -a 256 build/make-it-red-$(TARGET_VERSION).xpi | awk '{print $$1}')
+nickel export --format json --arg 'version' '"$(TARGET_VERSION)"' --arg 'hash' '"sha256:$$XPI_HASH"' config/Updates.nix -o build/updates-$(TARGET_VERSION).json

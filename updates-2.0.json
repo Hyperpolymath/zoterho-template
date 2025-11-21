@@ -1,0 +1,31 @@
+Nickel Configuration for Zotero Add-on Update Manifest (updates-2.0.json)
+
+This replaces the JSON template and dynamically accepts the computed hash from 'just'.
+
+Arguments passed from the 'just' command
+
+nickel export --arg 'version' '"2.0"' --arg 'hash' '"sha256:..."'
+
+let
+version | String = %error "Must provide 'version' argument.";
+hash | String = %error "Must provide 'hash' argument.";
+ID = "make-it-red@example.com";
+BaseURL = "https://www.google.com/search?q=https://zotero-download.s3.amazonaws.com/tmp/make-it-red/";
+in {
+addons = {
+"${ID}" = {
+updates = [
+{
+version = version;
+update_link = BaseURL + "make-it-red-" + version + ".xpi";
+update_hash = hash;
+applications = {
+zotero = {
+strict_min_version = "7.0";
+},
+},
+},
+],
+},
+},
+}

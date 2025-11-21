@@ -1,0 +1,23 @@
+Nickel Configuration for Zotero Add-on Manifest (manifest.json)
+
+This replaces the static JSON file.
+
+let
+ID = "make-it-red@example.com";
+Homepage = "https://www.google.com/search?q=https://gitlab.com/hyperpolymath/make-it-red-rhodium-standard";
+in {
+manifest_version = 2;
+name = "Make It Red (Rhodium)";
+version = "2.0";
+description = "Makes everything red (Rhodium Standard build)";
+homepage_url = Homepage;
+
+applications = {
+zotero = {
+id = ID;
+update_url = "https://www.google.com/search?q=https://zotero-download.s3.amazonaws.com/tmp/make-it-red/updates-2.0.json"; # URL needs to point to the final Updates JSON
+strict_min_version = "7.0";
+strict_max_version = "7.1.*";
+},
+},
+}

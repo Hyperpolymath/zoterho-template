@@ -1,0 +1,55 @@
+#!/usr/bin/env oil
+
+# The main build script, replacing the original 'make-zips' bash script.
+# This script orchestrates the build process using the 'just' command.
+
+# Set strict mode (fail on error, fail on unset var, pipeline failure)
+shopt --set errexit
+shopt --set nounset
+shopt --set pipefail
+
+# Define the target version for the current build (focusing on 2.0)
+const TARGET_VERSION = '2.0'
+const TARGET_DIR = ^'src-${TARGET_VERSION}'
+const XPI_NAME = ^'make-it-red-${TARGET_VERSION}.xpi'
+const BUILD_DIR = 'build'
+
+proc log(msg) {
+    echo ">> [BUILD] ${msg}"
+}
+
+proc ensure_build_dir {
+    if test --dir ${BUILD_DIR} {
+        log "Cleaning existing build directory: ${BUILD_DIR}"
+        rm -rf ${BUILD_DIR}
+    }
+    log "Creating build directory: ${BUILD_DIR}"
+    mkdir ${BUILD_DIR}
+}
+
+proc main {
+    log "Starting rhodium-standard Zotero plugin build..."
+
+    ensure_build_dir
+
+    # 1. Compile Rescript to JavaScript for the target version
+    just 'compile-rescript' --TARGET-VERSION ${TARGET_VERSION}
+
+    # 2. Compile Nickel config to Zotero JSON manifest for the target version
+    just 'compile-nickel' --TARGET-VERSION ${TARGET_VERSION}
+
+    # 3. Zip the compiled assets into the XPI file
+    log "Zipping compiled assets for ${TARGET_VERSION}..."
+    cd ${TARGET_DIR}
+    zip -r ../${BUILD_DIR}/${XPI_NAME} .
+    cd ..
+
+    # 4. Generate the final update JSON file (requires XPI hash)
+    log "Generating final update manifest with calculated hash..."
+    just 'generate-update-json' --TARGET-VERSION ${TARGET_VERSION}
+
+    log "Build successful. XPI and manifest are in the '${BUILD_DIR}' directory."
+}
+
+# Execute main function
+main

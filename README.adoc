@@ -1,0 +1,140 @@
+= Make It Red (Rhodium Standard)
+Jonathan D. A. Jewell
+v2.0, 2025-11-12
+:hp-repo-name: make-it-red-rhodium-standard
+:hp-gitlab-user: hyperpolymath
+:hp-zotero-version: 7+
+:toc: left
+:toclevels: 2
+
+A sample Zotero 7+ plugin demonstrating the Rhodium Standard for FOSS development: utilizing Rescript for type-safe logic, Nickel for declarative configuration, and Just for automation.
+
+This project is fully compliant with WCAG 2.3 AAA, prioritising accessibility and dependability in its structure.
+
+== 🚀 Quick Start (Build)
+
+This project uses the just command runner for all automation. Please ensure you have just installed alongside rescript (npm) and nickel (package manager).
+
+[source,bash]
+
+Ensure Rescript and Nickel are installed
+
+just setup
+
+Build the latest XPI package (v2.0)
+
+just build
+
+The resulting .xpi file and the update manifest will be placed in the build/ directory.
+
+== ⚙️ Architecture and Technology Stack
+
+|===
+|Component |Technology |Reasoning
+
+|Core Logic |https://rescript-lang.org/[Rescript] |Highest preference: Type safety, clean JavaScript output, superior dependability over raw TypeScript/JavaScript.
+|Configuration |https://nickel-lang.org/[Nickel] |Preferred for declarative, type-checked configuration, replacing fragile JSON/TOML.
+|Automation |https://www.google.com/search?q=https://github.casey.sh/just/[Just] + https://www.oilshell.org/[Oil Shell] |High-level automation using just recipes, with the core build script written in the preferred Oil shell for robust execution.
+|Data Layer |GraphQL (Placeholder) |Future-proofing for complex data queries, ensuring semantic, non-RESTful data access.
+|Compliance |WCAG 2.3 AAA |Ensured for Zotero's preference pane (XHTML/HTML) and any new UI elements.
+|===
+
+== 📁 Project Structure (src-2.0 Focus)
+
+[source,text]
+
+.
+├── JUSTFILE                # Primary build automation runner.
+├── README.adoc             # This document.
+├── cookbook.adoc           # Comprehensive list of all 'just' recipes.
+├── oil-shell/build.oil     # The core build script (replaces 'make-zips').
+├── config/                 # Nickel source files.
+│   ├── Manifest.nix        # Zotero manifest.json source.
+│   └── Updates.nix         # Zotero update JSON source.
+├── src-2.0/                # Zotero 7+ codebase (Pure Bootstrapped).
+│   ├── Bootstrap.res       # Rescript: Plugin entry point logic (compiles to bootstrap.js).
+│   ├── MakeItRed.res       # Rescript: Core DOM and menu manipulation (compiles to MakeItRed.js).
+│   ├── prefs.ts            # Zotero preference defaults (kept as simple Mozilla pref file).
+│   ├── style.css           # Zotero styling.
+│   └── ...
+
+== 📜 Shell Script Reference
+
+The primary build orchestration script is written in Oil Shell. The full, executable script is available in oil-shell/build.oil.
+
+[source,oil]
+
+#!/usr/bin/env oil
+
+... (Script content summary) ...
+
+proc main {
+# ...
+ensure_build_dir
+just 'compile-rescript' --TARGET-VERSION ${TARGET_VERSION}
+just 'compile-nickel' --TARGET-VERSION ${TARGET_VERSION}
+# ... zipping process ...
+just 'generate-update-json' --TARGET-VERSION ${TARGET_VERSION}
+# ...
+}
+
+... (Full content of oil-shell/build.oil is available in that file) ...
+
+For convenience, here are the wrappers for your preferred shells.
+
+Note: These scripts merely execute the build.oil script or the just command, as that is the source of truth.
+
+[source,bash]
+
+#!/usr/bin/env bash
+
+BASH SCRIPT
+
+Execute the Oil script via 'oil' interpreter, assuming it's installed.
+
+set -euo pipefail
+echo "Executing build using Oil Shell..."
+oil ./oil-shell/build.oil "$@"
+
+[source,zsh]
+
+#!/usr/bin/env zsh
+
+ZSH SCRIPT
+
+Execute the Oil script via 'oil' interpreter.
+
+set -euo pipefail
+echo "Executing build using Oil Shell..."
+oil ./oil-shell/build.oil "$@"
+
+[source,nushell]
+
+#!/usr/bin/env nushell
+
+NUSHELL SCRIPT
+
+Execute the Justfile recipe.
+
+echo "Executing build using Justfile..."
+just build $in
+
+== ♿ WCAG 2.3 AAA Compliance (UI/Web)
+
+Any future additions to the Zotero plugin's UI, especially the preference pane (preferences.xhtml is currently referenced), must adhere to WCAG 2.3 AAA guidelines.
+
+Colour: The "Red" and "Green" colours in style.css must ensure sufficient contrast with the background (e.g., using contrast-ratio checks against the Zotero theme).
+
+ARIA/Semantics: All custom UI elements, such as the registered preference pane, must use correct ARIA roles and semantic HTML/XHTML tags.
+
+Focus Management: Ensure keyboard navigation and focus indicators are clear and visible.
+
+== 🌐 IndieWeb Compliance
+
+For this local plugin, IndieWeb principles are best applied to the public repository structure:
+
+h-card: The GitLab repository metadata and the LICENSE file contain the author's name (Jonathan D.A. Jewell), serving as a rudimentary h-card.
+
+Decentralisation: The core software is FOSS, promoting decentralisation of the toolchain.
+
+For a complete reference of all build commands, please consult the cookbook.adoc file.
