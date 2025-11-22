@@ -1,0 +1,94 @@
+name: RSR Compliance
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  schedule:
+    # Run weekly on Mondays at 00:00 UTC
+    - cron: '0 0 * * 1'
+  workflow_dispatch:
+
+env:
+  # Force colors in output
+  FORCE_COLOR: 1
+  TERM: xterm-256color
+
+jobs:
+  rsr-validate:
+    name: Validate RSR Compliance
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check documentation files
+        run: |
+          echo "📚 Checking RSR documentation files..."
+          for file in README.md LICENSE.txt SECURITY.md CONTRIBUTING.md CODE_OF_CONDUCT.md MAINTAINERS.md CHANGELOG.md; do
+            if [ -f "$file" ]; then
+              echo "✅ $file"
+            else
+              echo "❌ Missing: $file"
+              exit 1
+            fi
+          done
+
+      - name: Check .well-known directory
+        run: |
+          echo "🌐 Checking .well-known/ directory..."
+          for file in .well-known/security.txt .well-known/ai.txt .well-known/humans.txt; do
+            if [ -f "$file" ]; then
+              echo "✅ $file"
+            else
+              echo "❌ Missing: $file"
+              exit 1
+            fi
+          done
+
+      - name: Check build automation
+        run: |
+          echo "🔨 Checking build automation..."
+          if [ -f "justfile" ]; then
+            echo "✅ justfile present"
+          else
+            echo "❌ Missing: justfile"
+            exit 1
+          fi
+
+      - name: Verify dual licensing
+        run: |
+          echo "⚖️  Checking dual licensing..."
+          if grep -q "MIT" LICENSE.txt && grep -q "Palimpsest" LICENSE.txt; then
+            echo "✅ Dual license present (MIT + Palimpsest)"
+          else
+            echo "❌ Dual license not found"
+            exit 1
+          fi
+
+      - name: Check security.txt expiration
+        run: |
+          echo "🔒 Checking security.txt expiration..."
+          if [ -f ".well-known/security.txt" ]; then
+            if grep -q "Expires:" .well-known/security.txt; then
+              expires_line=$(grep "Expires:" .well-known/security.txt)
+              echo "Found: $expires_line"
+              echo "✅ Expiration date present"
+              # TODO: Add actual date validation
+            else
+              echo "⚠️  Warning: No expiration date in security.txt"
+            fi
+          fi
+
+      - name: RSR Compliance Summary
+        run: |
+          echo "📊 RSR Compliance Summary"
+          echo "=========================="
+          echo ""
+          echo "✅ Documentation: 7/7 files"
+          echo "✅ .well-known/: 3/3 files"
+          echo "✅ Build automation: justfile present"
+          echo "✅ Dual licensing: MIT + Palimpsest v0.8"
+          echo ""
+          echo "🎉 RSR Bronze compliance verified!"

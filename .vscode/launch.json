@@ -1,0 +1,42 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Rust: Debug",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${workspaceFolder}/examples/rust-minimal/target/debug/rsr-example",
+      "args": ["example.conf"],
+      "cwd": "${workspaceFolder}/examples/rust-minimal",
+      "preLaunchTask": "Rust: Build"
+    },
+    {
+      "name": "Python: Debug",
+      "type": "python",
+      "request": "launch",
+      "module": "yaml_validator",
+      "args": ["example.yaml"],
+      "cwd": "${workspaceFolder}/examples/python-minimal",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Python: Debug Tests",
+      "type": "python",
+      "request": "launch",
+      "module": "pytest",
+      "cwd": "${workspaceFolder}/examples/python-minimal",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "TypeScript: Debug",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/examples/typescript-minimal/dist/index.js",
+      "args": ["schema.json", "data.json"],
+      "cwd": "${workspaceFolder}/examples/typescript-minimal",
+      "preLaunchTask": "TypeScript: Build",
+      "outFiles": ["${workspaceFolder}/examples/typescript-minimal/dist/**/*.js"],
+      "sourceMaps": true
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+# Git attributes for RSR-compliant projects
+# https://git-scm.com/docs/gitattributes
+
+# Auto-detect text files and normalize line endings
+* text=auto
+
+# Explicitly declare text files
+*.md text
+*.txt text
+*.rs text
+*.py text
+*.ts text
+*.js text
+*.json text
+*.toml text
+*.yaml text
+*.yml text
+*.sh text eol=lf
+*.bash text eol=lf
+
+# Declare binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+
+# Diff settings for specific file types
+*.rs diff=rust
+*.py diff=python
+*.md diff=markdown
+
+# Export ignore (files to exclude from git archive)
+.gitattributes export-ignore
+.gitignore export-ignore
+.github export-ignore
+.vscode export-ignore
+.devcontainer export-ignore
+*.test.* export-ignore
+tests/ export-ignore
+
+# Linguist overrides (GitHub language statistics)
+*.md linguist-documentation
+examples/* linguist-documentation=false
+docs/* linguist-documentation
+
+# Mark generated files
+*.lock linguist-generated=true
+Cargo.lock linguist-generated=false
+package-lock.json linguist-generated=false
