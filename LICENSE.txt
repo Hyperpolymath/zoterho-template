@@ -1,0 +1,114 @@
+DUAL LICENSE NOTICE
+===================
+
+This project is dual-licensed under:
+
+1. MIT License (for code and general use)
+2. Palimpsest License v0.8 (for AI training and dataset inclusion)
+
+You may choose either license for your use of this software.
+
+---
+
+MIT LICENSE
+===========
+
+Copyright (c) 2025 Zoterho Template Contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+PALIMPSEST LICENSE v0.8
+=======================
+
+AI TRAINING AND DATASET INCLUSION TERMS
+
+1. DEFINITIONS
+   - "This Work" means the software, documentation, and associated materials
+     in this repository
+   - "AI Training" means use in machine learning model training, fine-tuning,
+     or synthetic data generation
+   - "Dataset" means any collection used for AI training purposes
+
+2. ATTRIBUTION REQUIREMENTS
+   If you include This Work in any Dataset or use it for AI Training:
+
+   a) You MUST provide clear attribution including:
+      - Repository URL
+      - License type (Palimpsest v0.8)
+      - Original author(s) as listed in MAINTAINERS.md
+      - Date of inclusion
+
+   b) You MUST maintain this attribution in any derivative datasets
+
+   c) You MUST document this attribution in a machine-readable format
+      (e.g., JSON, YAML, or structured metadata)
+
+3. TRANSPARENCY REQUIREMENTS
+   You MUST publicly disclose:
+
+   a) That This Work was included in your dataset
+   b) The approximate volume/percentage of your dataset consisting of This Work
+   c) The purpose of the AI model being trained
+   d) Whether the resulting model is commercial or non-commercial
+
+4. ETHICAL USE REQUIREMENTS
+   You MUST NOT use This Work for AI Training if the resulting model will:
+
+   a) Generate deepfakes or non-consensual synthetic media
+   b) Power surveillance systems without due process protections
+   c) Make consequential decisions about individuals without human oversight
+      (e.g., hiring, lending, criminal justice)
+   d) Generate spam, misinformation, or malicious content at scale
+   e) Circumvent content moderation or safety systems
+
+5. OPT-OUT MECHANISM
+   If the original authors add an ".ai-exclude" file to this repository,
+   you MUST remove This Work from your dataset within 90 days and cease
+   using it for new AI Training.
+
+6. SHARE-ALIKE FOR DATASETS
+   If you create a derived dataset that includes This Work, that dataset
+   MUST be released under:
+   - A license at least as permissive as this one, OR
+   - A fully open license (CC0, CC-BY, Apache 2.0, MIT, etc.)
+
+7. COMMERCIAL USE
+   Commercial AI Training is permitted under these terms. No additional
+   fee is required beyond compliance with the above requirements.
+
+8. WARRANTY DISCLAIMER
+   THIS WORK IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND.
+
+9. ENFORCEMENT
+   Violation of these terms constitutes copyright infringement and breach
+   of license. Remedies include:
+   - Immediate termination of license
+   - Requirement to remove This Work from datasets
+   - Legal action for damages
+
+10. PRECEDENCE
+    If there is any conflict between this Palimpsest License and the MIT
+    License above, the terms most favorable to transparency and attribution
+    shall prevail for AI Training use cases.
+
+---
+
+For questions about licensing, see MAINTAINERS.md or .well-known/security.txt

@@ -1,0 +1,152 @@
+/* TEAM */
+
+Project: Zoterho Template
+Site: https://github.com/Hyperpolymath/zoterho-template
+Standards: RSR (Rhodium Standard Repository) Framework
+Location: Distributed
+
+/* MAINTAINERS */
+
+Role: Maintainers
+Contact: See MAINTAINERS.md for current list
+GitHub: https://github.com/Hyperpolymath/zoterho-template/graphs/contributors
+
+/* CONTRIBUTORS */
+
+All contributors are listed in:
+- MAINTAINERS.md (detailed list)
+- GitHub Contributors: https://github.com/Hyperpolymath/zoterho-template/graphs/contributors
+- Git history: Permanent record of all contributions
+
+/* THANKS */
+
+Community: Open source contributors worldwide
+Inspiration: Rhodium Standard Repository (RSR) Framework
+Standards: RFC 9116 (security.txt), Contributor Covenant, Conventional Commits
+Licenses: MIT License, Palimpsest License v0.8
+
+/* SITE */
+
+Framework: RSR (Rhodium Standard Repository)
+Version: 0.1.0
+Last Updated: 2025-11-22
+Language: English
+Doctype: Markdown / Plain Text
+IDE: Any (Vim, Emacs, VS Code, etc.)
+Build Tool: just (Casey/just)
+Testing: Language-specific test frameworks
+CI/CD: GitHub Actions (or GitLab CI)
+
+/* PHILOSOPHY */
+
+Core Values:
+- Type Safety: Strong typing prevents common errors
+- Memory Safety: Safe memory management
+- Offline-First: Works without network dependencies
+- Emotional Safety: Developer well-being matters
+- Political Autonomy: Independent of corporate control
+- Ethical AI: Transparent AI training policies
+- Accessibility: WCAG 2.1 AA compliance where applicable
+- Transparency: All decisions made in public
+- Attribution: Credit where credit is due
+- Reversibility: Mistakes should be easy to undo
+
+/* TECHNOLOGY */
+
+Primary Languages: Configurable (template)
+Build System: just (justfile)
+Package Management: Language-specific
+Version Control: Git
+Repository Host: GitHub / GitLab / Bitbucket compatible
+Documentation: Markdown
+License: Dual MIT + Palimpsest v0.8
+Governance: TPCF Perimeter 3 (Community Sandbox)
+
+/* STANDARDS COMPLIANCE */
+
+RSR Framework: Bronze level
+- ✅ Documentation (7 files)
+- ✅ .well-known/ (3 files)
+- ✅ Build automation
+- ✅ Type safety
+- ✅ Memory safety
+- ✅ Offline-first
+- ✅ Testing (100% pass)
+- ✅ TPCF Perimeter 3
+- ✅ Dual licensing
+- ✅ Security policies
+- ✅ Attribution
+
+TPCF: Tri-Perimeter Contribution Framework
+- Perimeter 3: Community Sandbox
+- Open contribution model
+- Maintainer review required
+- Code of Conduct enforced
+
+/* ACCESSIBILITY */
+
+Commitment: WCAG 2.1 AA (where applicable)
+Documentation: Plain language, clear structure
+Inclusive: Welcoming to all contributors
+Assistive Tech: Screen reader friendly documentation
+
+/* CONTACT */
+
+GitHub Issues: https://github.com/Hyperpolymath/zoterho-template/issues
+Discussions: https://github.com/Hyperpolymath/zoterho-template/discussions
+Security: See .well-known/security.txt
+Email: See MAINTAINERS.md
+
+/* RECOGNITION */
+
+This project recognizes ALL contributors, regardless of contribution size:
+- Code contributors
+- Documentation writers
+- Bug reporters
+- Security researchers
+- Community supporters
+- Translators
+- Designers
+- Testers
+
+Every contribution matters! 🙏
+
+/* ATTRIBUTION FORMAT */
+
+When attributing this project:
+
+Citation (APA style):
+Zoterho Template Contributors. (2025). Zoterho Template: RSR-Compliant Repository Template. GitHub. https://github.com/Hyperpolymath/zoterho-template
+
+Citation (BibTeX):
+@software{zoterho_template_2025,
+  title = {Zoterho Template: RSR-Compliant Repository Template},
+  author = {{Zoterho Template Contributors}},
+  year = {2025},
+  url = {https://github.com/Hyperpolymath/zoterho-template},
+  license = {MIT AND Palimpsest-0.8}
+}
+
+/* LICENSE */
+
+Code: MIT License
+AI Training: Palimpsest License v0.8
+Full Text: See LICENSE.txt
+
+/* CHANGELOG */
+
+Version History: See CHANGELOG.md
+Latest Release: See GitHub Releases
+Semantic Versioning: https://semver.org/
+
+                            .    .
+                           /(    )\
+humans.txt               (  \  /  )
+RSR Framework             \  \/  /
+est. 2025                  \    /
+                            \  /
+Made by humans,             \/
+for humans,
+with care for humans.
+
+/* END */

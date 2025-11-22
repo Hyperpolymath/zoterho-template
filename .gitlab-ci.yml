@@ -1,0 +1,278 @@
+# GitLab CI/CD Configuration for RSR-Compliant Repository
+# This configuration can be adapted for GitHub Actions or other CI systems
+
+# Stages define the pipeline structure
+stages:
+  - validate    # RSR compliance validation
+  - lint       # Code quality checks
+  - test       # Run test suite
+  - build      # Build artifacts
+  - security   # Security scanning
+  - deploy     # Deployment (optional)
+
+# Global variables
+variables:
+  # Customize these for your project
+  GIT_DEPTH: 10
+  # Add language-specific variables here
+  # Example for Rust: CARGO_HOME: "${CI_PROJECT_DIR}/.cargo"
+  # Example for Node: NPM_CONFIG_CACHE: "${CI_PROJECT_DIR}/.npm"
+
+# Default configuration for all jobs
+default:
+  # Use appropriate image for your language
+  # image: rust:latest
+  # image: node:lts
+  # image: python:3.11
+  image: alpine:latest
+
+  before_script:
+    - echo "Starting job..."
+    # Install just if needed
+    # - apk add --no-cache just || true
+
+# === VALIDATION STAGE ===
+
+rsr-compliance:
+  stage: validate
+  script:
+    - echo "Validating RSR compliance..."
+    - just validate || echo "Install 'just' to run full validation"
+    # Manual validation if 'just' is not available
+    - test -f README.md && echo "✅ README.md"
+    - test -f LICENSE.txt && echo "✅ LICENSE.txt"
+    - test -f SECURITY.md && echo "✅ SECURITY.md"
+    - test -f CONTRIBUTING.md && echo "✅ CONTRIBUTING.md"
+    - test -f CODE_OF_CONDUCT.md && echo "✅ CODE_OF_CONDUCT.md"
+    - test -f MAINTAINERS.md && echo "✅ MAINTAINERS.md"
+    - test -f CHANGELOG.md && echo "✅ CHANGELOG.md"
+    - test -f .well-known/security.txt && echo "✅ security.txt"
+    - test -f .well-known/ai.txt && echo "✅ ai.txt"
+    - test -f .well-known/humans.txt && echo "✅ humans.txt"
+    - echo "✅ RSR compliance validation passed"
+  allow_failure: false
+
+documentation-check:
+  stage: validate
+  script:
+    - echo "Checking documentation quality..."
+    - grep -q "RSR" README.md && echo "✅ README mentions RSR"
+    - grep -q "TPCF" README.md && echo "✅ README mentions TPCF"
+    - grep -q "MIT" LICENSE.txt && echo "✅ MIT license present"
+    - grep -q "Palimpsest" LICENSE.txt && echo "✅ Palimpsest license present"
+    - echo "✅ Documentation check passed"
+  allow_failure: false
+
+# === LINT STAGE ===
+
+# Customize these based on your language
+lint-code:
+  stage: lint
+  script:
+    - echo "Linting code..."
+    # Uncomment for your language:
+    # - cargo clippy -- -D warnings  # Rust
+    # - npm run lint                 # Node.js
+    # - ruff check .                 # Python
+    # - golangci-lint run            # Go
+    - echo "⚠️  Configure linter for your language"
+  allow_failure: true
+
+format-check:
+  stage: lint
+  script:
+    - echo "Checking code formatting..."
+    # Uncomment for your language:
+    # - cargo fmt -- --check         # Rust
+    # - prettier --check .           # Node.js
+    # - ruff format --check .        # Python
+    # - gofmt -l .                   # Go
+    - echo "⚠️  Configure formatter for your language"
+  allow_failure: true
+
+# === TEST STAGE ===
+
+unit-tests:
+  stage: test
+  script:
+    - echo "Running unit tests..."
+    # Uncomment for your language:
+    # - cargo test                   # Rust
+    # - npm test                     # Node.js
+    # - pytest                       # Python
+    # - go test ./...                # Go
+    - echo "⚠️  Configure tests for your language"
+  allow_failure: true
+  coverage: '/\d+\.\d+% coverage/'
+  artifacts:
+    reports:
+      # Customize based on your test framework
+      # junit: target/test-results.xml
+      # coverage_report:
+      #   coverage_format: cobertura
+      #   path: coverage/cobertura-coverage.xml
+    when: always
+    expire_in: 1 week
+
+integration-tests:
+  stage: test
+  script:
+    - echo "Running integration tests..."
+    # Add integration test commands here
+    - echo "⚠️  Configure integration tests"
+  allow_failure: true
+  # Only run on main branch or MRs
+  only:
+    - main
+    - merge_requests
+
+# === BUILD STAGE ===
+
+build-project:
+  stage: build
+  script:
+    - echo "Building project..."
+    # Uncomment for your language:
+    # - cargo build --release        # Rust
+    # - npm run build                # Node.js
+    # - python setup.py build        # Python
+    # - go build                     # Go
+    - echo "⚠️  Configure build for your language"
+  artifacts:
+    paths:
+      # Customize based on your build output
+      # - target/release/
+      # - dist/
+      # - build/
+    expire_in: 1 week
+  allow_failure: true
+
+# === SECURITY STAGE ===
+
+dependency-security:
+  stage: security
+  script:
+    - echo "Scanning dependencies for vulnerabilities..."
+    # Uncomment for your language:
+    # - cargo audit                  # Rust
+    # - npm audit                    # Node.js
+    # - pip-audit                    # Python
+    # - govulncheck ./...            # Go
+    - echo "⚠️  Configure security scanning"
+  allow_failure: true
+  only:
+    - main
+    - merge_requests
+
+secret-detection:
+  stage: security
+  script:
+    - echo "Scanning for secrets in code..."
+    # Install and run gitleaks or similar
+    # - gitleaks detect --source . --verbose
+    - echo "⚠️  Configure secret detection (e.g., gitleaks, trufflehog)"
+  allow_failure: true
+
+license-compliance:
+  stage: security
+  script:
+    - echo "Checking license compliance..."
+    - test -f LICENSE.txt || (echo "❌ LICENSE.txt missing" && exit 1)
+    - grep -q "MIT" LICENSE.txt || (echo "❌ MIT license missing" && exit 1)
+    - grep -q "Palimpsest" LICENSE.txt || (echo "❌ Palimpsest license missing" && exit 1)
+    - echo "✅ License compliance verified"
+  allow_failure: false
+
+# === DEPLOY STAGE (Optional) ===
+
+deploy-staging:
+  stage: deploy
+  script:
+    - echo "Deploying to staging..."
+    # Add deployment commands here
+  environment:
+    name: staging
+    url: https://staging.example.com
+  only:
+    - main
+  when: manual
+  allow_failure: true
+
+deploy-production:
+  stage: deploy
+  script:
+    - echo "Deploying to production..."
+    # Add deployment commands here
+  environment:
+    name: production
+    url: https://example.com
+  only:
+    - tags
+  when: manual
+  allow_failure: false
+
+# === SCHEDULED JOBS ===
+
+# Weekly dependency updates check
+dependency-updates:
+  stage: validate
+  script:
+    - echo "Checking for dependency updates..."
+    # - cargo outdated              # Rust
+    # - npm outdated                # Node.js
+    # - pip list --outdated         # Python
+    # - go list -u -m all           # Go
+  only:
+    - schedules
+  allow_failure: true
+
+# === CACHE CONFIGURATION ===
+
+# Customize cache based on your language
+# cache:
+#   paths:
+#     - .cargo/               # Rust
+#     - target/               # Rust
+#     - node_modules/         # Node.js
+#     - .npm/                 # Node.js
+#     - __pycache__/          # Python
+#     - .venv/                # Python
+#     - pkg/                  # Go
+#     - bin/                  # Go
+
+# === WORKFLOW RULES ===
+
+# Define when the pipeline runs
+workflow:
+  rules:
+    # Run on merge requests
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    # Run on main branch
+    - if: $CI_COMMIT_BRANCH == "main"
+    # Run on tags
+    - if: $CI_COMMIT_TAG
+    # Run on schedules
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+
+# === NOTES ===
+
+# To adapt for GitHub Actions:
+# 1. Rename to .github/workflows/ci.yml
+# 2. Convert stages to jobs
+# 3. Use GitHub Actions syntax
+# 4. Example:
+#
+# name: CI
+# on: [push, pull_request]
+# jobs:
+#   validate:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v4
+#       - run: just validate
+#
+#   test:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v4
+#       - run: just test

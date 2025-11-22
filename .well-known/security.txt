@@ -1,0 +1,47 @@
+# security.txt - RFC 9116 Compliant Security Contact Information
+# This file provides security contact information for this project.
+# For more information, see https://securitytxt.org/
+
+# Our security policy and disclosure process
+Contact: https://github.com/Hyperpolymath/zoterho-template/security/advisories/new
+Contact: See MAINTAINERS.md for maintainer contact information
+
+# Canonical URL for this security.txt file
+Canonical: https://github.com/Hyperpolymath/zoterho-template/.well-known/security.txt
+
+# Security policy documentation
+Policy: https://github.com/Hyperpolymath/zoterho-template/blob/main/SECURITY.md
+
+# Preferred languages for security reports
+Preferred-Languages: en
+
+# Security acknowledgments
+Acknowledgments: https://github.com/Hyperpolymath/zoterho-template/blob/main/MAINTAINERS.md
+
+# This security.txt file expires one year from last update
+# Maintainers: Update this file annually
+Expires: 2026-11-22T23:59:59Z
+
+# PGP key for encrypted communications (optional - add if available)
+# Encryption: https://example.com/pgp-key.txt
+
+# Security researchers who responsibly disclose vulnerabilities will be:
+# - Acknowledged in MAINTAINERS.md (with permission)
+# - Credited in security advisories
+# - Thanked in release notes
+
+# Severity classification: We use CVSS 3.1
+# Response timeline:
+# - 24 hours: Initial acknowledgment
+# - 7 days: Preliminary assessment
+# - 30 days: Fix for critical vulnerabilities
+# - 90 days: Coordinated public disclosure
+
+# Out of scope:
+# - Social engineering attacks
+# - Denial of Service (DoS)
+# - Physical attacks
+# - Issues in third-party dependencies (report to upstream)
+
+# Bug bounty: We do not currently offer paid bounties, but we deeply
+# appreciate responsible disclosure and provide recognition.

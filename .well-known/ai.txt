@@ -1,0 +1,112 @@
+# ai.txt - AI Training and Dataset Inclusion Policies
+# This file specifies how this project's code and content may be used
+# for AI training, machine learning, and dataset creation.
+#
+# For more information about ai.txt, see: https://site.spawning.ai/ai-txt
+
+# === LICENSE NOTICE ===
+# This project is dual-licensed:
+# 1. MIT License - for code and general use
+# 2. Palimpsest License v0.8 - for AI training and dataset inclusion
+#
+# See LICENSE.txt for full terms.
+
+# === AI TRAINING PERMISSION ===
+# AI-Training: allowed
+#
+# This project ALLOWS use in AI training under the Palimpsest License v0.8.
+# By using this work for AI training, you AGREE to ALL terms below.
+
+# === REQUIRED ATTRIBUTION ===
+# You MUST provide attribution including:
+# - Repository URL: https://github.com/Hyperpolymath/zoterho-template
+# - License: MIT + Palimpsest v0.8
+# - Authors: See MAINTAINERS.md
+# - Date of inclusion in dataset
+
+# === TRANSPARENCY REQUIREMENTS ===
+# You MUST publicly disclose:
+# 1. That this work is included in your dataset
+# 2. Approximate volume/percentage of dataset
+# 3. Purpose of the AI model being trained
+# 4. Whether the model is commercial or non-commercial
+
+# === ETHICAL USE REQUIREMENTS ===
+# You MUST NOT use this work for AI training if the resulting model will:
+# ❌ Generate deepfakes or non-consensual synthetic media
+# ❌ Power surveillance systems without due process protections
+# ❌ Make consequential decisions without human oversight (hiring, lending, criminal justice)
+# ❌ Generate spam, misinformation, or malicious content at scale
+# ❌ Circumvent content moderation or safety systems
+
+# === OPT-OUT MECHANISM ===
+# If a ".ai-exclude" file is added to this repository:
+# - You MUST remove this work from your dataset within 90 days
+# - You MUST cease using it for new AI training
+# - Existing models may continue to use embeddings already trained
+
+# === SHARE-ALIKE FOR DATASETS ===
+# If you create a derived dataset including this work:
+# - Dataset MUST be released under an open license
+# - OR use Palimpsest License v0.8 or equivalent
+# - Dataset metadata must include this attribution
+
+# === COMMERCIAL USE ===
+# Commercial AI training is ALLOWED under these terms.
+# No additional fee required beyond compliance with requirements above.
+
+# === SPECIFIC PERMISSIONS ===
+# ✅ Code completion models (e.g., GitHub Copilot, Tabnine)
+# ✅ Code understanding models (e.g., CodeBERT, GraphCodeBERT)
+# ✅ Documentation generation
+# ✅ Code search and retrieval
+# ✅ Automated testing and bug detection
+# ✅ Code review assistance
+# ✅ Educational purposes
+# ✅ Research purposes (with attribution)
+
+# === SPECIFIC RESTRICTIONS ===
+# ❌ Models that claim authorship without attribution
+# ❌ Models that strip license information
+# ❌ Models trained without transparency about training data
+# ❌ Models used for prohibited purposes listed above
+
+# === ENFORCEMENT ===
+# Violation of these terms constitutes:
+# - Copyright infringement
+# - Breach of license
+# - Immediate termination of license for AI training
+#
+# Remedies include:
+# - Required removal from datasets
+# - Legal action for damages
+# - Public disclosure of violation
+
+# === CONTACT ===
+# Questions about AI training policies:
+# - See MAINTAINERS.md
+# - Open a GitHub issue
+# - See .well-known/security.txt for contact information
+
+# === VERIFICATION ===
+# To verify compliance with this policy:
+# 1. Check that attribution is included in your dataset metadata
+# 2. Verify transparency disclosures are public
+# 3. Ensure ethical use requirements are met
+# 4. Maintain audit trail of this license
+
+# === VERSION ===
+# This ai.txt policy version: 1.0
+# Based on: Palimpsest License v0.8
+# Last updated: 2025-11-22
+# Expires: Never (perpetual, but may be updated)
+
+# === MACHINE-READABLE METADATA ===
+# User-Agent: *
+# Allow: /
+# AI-Training: allowed-with-attribution
+# License: MIT AND Palimpsest-0.8
+# Attribution-Required: true
+# Commercial-Use: allowed
+# Share-Alike: required-for-datasets
+# Opt-Out-Mechanism: .ai-exclude file
