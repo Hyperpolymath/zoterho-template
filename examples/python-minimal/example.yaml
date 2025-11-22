@@ -1,0 +1,27 @@
+# Example YAML configuration
+# This demonstrates the simple YAML parser
+
+# Project metadata
+name: RhodiumPythonExample
+version: 0.1.0
+license: MIT OR Palimpsest-0.8
+
+# Description
+description: RSR-compliant Python example with zero dependencies
+
+# Boolean settings
+rsr_compliant: true
+offline_first: yes
+type_safe: true
+
+# Numeric settings
+port: 8080
+timeout: 30.5
+
+# List of features
+features:
+- type-safe
+- memory-safe
+- offline-first
+- zero-dependencies
+- comprehensive-tests

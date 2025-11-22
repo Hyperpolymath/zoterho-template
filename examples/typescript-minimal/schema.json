@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "required": ["name", "version", "license"],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "license": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "rsr_compliant": {
+      "type": "boolean"
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

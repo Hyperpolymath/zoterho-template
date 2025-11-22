@@ -1,0 +1,22 @@
+[package]
+name = "rsr-example"
+version = "0.1.0"
+edition = "2021"
+authors = ["Zoterho Template Contributors"]
+license = "MIT OR Palimpsest-0.8"
+description = "RSR-compliant Rust example with zero dependencies"
+repository = "https://github.com/Hyperpolymath/zoterho-template"
+readme = "README.md"
+
+[dependencies]
+# Zero external dependencies - using only Rust std library
+# This demonstrates offline-first and minimal dependency principles
+
+[dev-dependencies]
+# No dev dependencies either - using built-in test framework
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true

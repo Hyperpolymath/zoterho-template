@@ -1,0 +1,13 @@
+{
+  "name": "zoterho-typescript-example",
+  "version": "0.1.0",
+  "license": "MIT OR Palimpsest-0.8",
+  "description": "RSR-compliant TypeScript example with zero dependencies",
+  "rsr_compliant": true,
+  "features": [
+    "type-safe",
+    "zero-dependencies",
+    "offline-first",
+    "comprehensive-tests"
+  ]
+}

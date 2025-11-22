@@ -1,0 +1,37 @@
+{
+  "name": "@zoterho/typescript-example",
+  "version": "0.1.0",
+  "description": "RSR-compliant TypeScript example with zero npm dependencies",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "test": "node --test dist/**/*.test.js",
+    "lint": "tsc --noEmit",
+    "format": "prettier --write 'src/**/*.ts'",
+    "clean": "rm -rf dist",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js"
+  },
+  "keywords": [
+    "rsr",
+    "rhodium",
+    "typescript",
+    "zero-dependencies",
+    "offline-first"
+  ],
+  "author": "Zoterho Template Contributors",
+  "license": "(MIT OR Palimpsest-0.8)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Hyperpolymath/zoterho-template"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
