@@ -1,4 +1,4 @@
-= Make It Red (Rhodium Standard)
+= Make It Rhodium
 Jonathan D. A. Jewell
 v2.0, 2025-11-12
 :hp-repo-name: make-it-red-rhodium-standard
